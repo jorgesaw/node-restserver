@@ -2,12 +2,11 @@
 //ID_CLIENTE_GOOGLE: 605397945767-1tks299v6vqic270c3f7e0f43i0p2m1e.apps.googleusercontent.com
 //PASSWORD: AALl1pJCafFF0y2pHWuco7nB
 require('./config/config');
-
 const express = require('express')
 const mongoose = require('mongoose');
 const path = require('path');
 
-const app = express()
+const app = express();
 
 const bodyParser = require('body-parser')
 

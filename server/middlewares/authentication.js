@@ -32,4 +32,24 @@ let verifyAdminSuperUser = (req, res, next) => {
     next();
 };
 
-module.exports = { verifyToken, verifyAdminSuperUser }
+// Verify token at URL
+let verifyTokenPictureUrl = (req, res, next) => {
+    let token = req.query.Authorization;
+
+    jwt.verify(token, process.env.SEED_TOKEN, (err, decoded) => {
+        if (err) {
+            return res.status(401).json({
+                ok: false,
+                err: {
+                    message: 'Token not valid.'
+                }
+            });
+        }
+
+        req.user = decoded.user;
+        next();
+    });
+
+};
+
+module.exports = { verifyToken, verifyAdminSuperUser, verifyTokenPictureUrl }
